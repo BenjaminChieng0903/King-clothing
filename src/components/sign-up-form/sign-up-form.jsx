@@ -1,9 +1,8 @@
-import { async } from "@firebase/util";
 import { useState } from "react";
 import FormInput from '../form-input/form-input'
 import './sign-up-form.scss'
 import Button from "../button/Button";
-import { createAuthUserWithEmailAndPassword, CreaeteUserDocFromAuth} from "../../utils/firebase/firebase";
+import { createAuthUserWithEmailAndPassword, CreaeteUserDocFromAuth,Signout} from "../../utils/firebase/firebase";
 const DefaultField = {
     displayName:'',
     email:'',
@@ -31,6 +30,9 @@ const Signup = ()=>{
         try {
             const {user} = await createAuthUserWithEmailAndPassword(email, password);
             await CreaeteUserDocFromAuth(user, {displayName})
+            alert('Congrats! You have registered already!')
+            await Signout()
+            setFormField(DefaultField)
         } catch (error) {
             console.log(error);
         }
@@ -45,7 +47,6 @@ const Signup = ()=>{
         <FormInput label='ConfirmPassword' type='password' required onChange={handleChange} name='confirmPassword' value={confirmPassword}></FormInput>
         <Button type="submit" buttonType='inverted'>Sign up</Button>
         </form>
-        
         </div>
     )
 

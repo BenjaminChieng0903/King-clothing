@@ -1,7 +1,7 @@
 import { initializeApp, } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import {GoogleAuthProvider,getAuth,signInWithPopup,
-    createUserWithEmailAndPassword,signInWithEmailAndPassword} from 'firebase/auth'
+    createUserWithEmailAndPassword,signInWithEmailAndPassword,signInWithRedirect,signOut, onAuthStateChanged} from 'firebase/auth'
 import{getDoc,setDoc,doc,getFirestore}from 'firebase/firestore'
 
 const firebaseConfig = {
@@ -24,6 +24,7 @@ provider.setCustomParameters({
 })
 export const auth = new getAuth();
 export const SignInWithGooglePopup = ()=> signInWithPopup(auth,provider);
+export const SignInWithRedirect = ()=> signInWithRedirect(auth, provider)
 
 export const db = getFirestore();
 export const CreaeteUserDocFromAuth = async(userAuth, additionalInfo)=>{
@@ -56,3 +57,7 @@ export const signinAuthUserWithEmailAndPassword = (email, password)=>{
     if(!email || !password)return;
     return signInWithEmailAndPassword(auth, email, password);
 }
+
+export const Signout = async()=> signOut(auth);
+
+export const UserChangeListener = (callback)=>onAuthStateChanged(auth, callback)
