@@ -2,7 +2,6 @@ import { useState } from 'react';
 
 import FormInput from '../form-input/form-input';
 import Button from '../Button/Button';
-
 import {
   signInAuthUserWithEmailAndPassword,
   signInWithGooglePopup,
