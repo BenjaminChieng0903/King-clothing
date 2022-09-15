@@ -11,6 +11,7 @@ export const productsContext = createContext({
 export const ProductsProvider = ({children})=>{
     const [products, setProducts] = useState({});
     const value = {products, setProducts}
+    // console.log("remount")
     useEffect(()=>{
         const getCategoryMap = async()=>{
             const categoryMap =  await GetCollectionAndDoc()

@@ -1,17 +1,21 @@
 import './category-item.scss'
-const categoryItem = ({category})=>{
-    const {title, imageUrl}=category
+import { useNavigate } from 'react-router-dom'
+const CategoryItem = ({category})=>{
+    const {title, imageUrl, route}=category
+    const navigate = useNavigate()
+    const Navgation = ()=>{navigate(`${route}`)}
+
     return(
         <div className="category-container" >
       <div className='background-image' style={{
-        backgroundImage:`url(${imageUrl})`
-      }}/>
+        backgroundImage:`url(${imageUrl})` 
+      } } onClick={Navgation}/>
       <div className="category-body-container">
-    <h2>{title}</h2>
-    <p>SHOP NOW</p>
+    <h2 onClick={Navgation}>{title}</h2>
+    <p onClick={Navgation}>SHOP NOW</p>
     </div>
     </div>
     )
 }
 
-export default categoryItem;
+export default CategoryItem;
