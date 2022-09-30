@@ -8,9 +8,17 @@ import { CartContext } from "../../context/cartContext";
 import { UserContext } from "../../context/userContext";
 import { useContext } from "react";
 import { Signout } from "../../../utils/firebase/firebase";
+import { useSelector } from "react-redux";
+import { selectorCurrentUser } from "../../store/user/user.selector";
+import { selectorCartIsCartOpen } from "../../store/cart/cart.selector";
+
 const Navigation = ()=>{
-   const {isCartOpen} = useContext(CartContext)
-   const {currentUser} =  useContext(UserContext)
+  //  const {isCartOpen} = useContext(CartContext)
+
+   const currentUser = useSelector(selectorCurrentUser)
+   const isCartOpen = useSelector(selectorCartIsCartOpen)
+  //  console.log(currentUser)
+  //  const {currentUser} =  useContext(UserContext)
     return(
       <Fragment>
         <div className="navigation">

@@ -96,7 +96,7 @@ export const CartProvider = ({children})=>{
     // const [ totalPrice, setTotalPrice] = useState(0)
     const [state, dispatch] 
                         = useReducer(cartReducer,INITIAL_STATE )
-    console.log(state)
+    // console.log(state)
     const {isCartOpen, cartItems, quantity, totalPrice} = state
     const AddOrRemoveCartItemsReducer = (NewcartItems)=>{
         const setTotalPrice = (NewcartItems.reduce((total, cartItem)=>{

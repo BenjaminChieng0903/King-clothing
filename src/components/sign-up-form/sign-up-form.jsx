@@ -19,7 +19,6 @@ const Signup = ()=>{
     const{name,value} = event.target;
     // console.log(name,value);
     setFormField({...FormField, [name]: value})
-    // console.log(FormField)
 }
     const handlesubmit = async (event)=>{
         event.preventDefault();
@@ -29,7 +28,8 @@ const Signup = ()=>{
         }
         try {
             const {user} = await createAuthUserWithEmailAndPassword(email, password);
-            await CreaeteUserDocFromAuth(user, {displayName})
+            console.log(user)
+            await CreaeteUserDocFromAuth(user, {displayName:displayName})
             alert('Congrats! You have registered already!')
             await Signout()
             setFormField(DefaultField)

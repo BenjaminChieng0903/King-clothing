@@ -1,0 +1,1 @@
+export const selectorOrder = (state)=>state.order.isOrderComplete

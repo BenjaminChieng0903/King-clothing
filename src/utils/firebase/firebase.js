@@ -58,12 +58,12 @@ export const GetCollectionAndDoc = async()=>{
     acc[title.toLowerCase()] = items
     return acc
   },{})
+  console.log(categoryMap)
   return categoryMap
 }
-
 export const CreaeteUserDocFromAuth = async (
   userAuth,
-  additionalInformation = {}
+  additionalInformation
 ) => {
   if (!userAuth) return;
 
