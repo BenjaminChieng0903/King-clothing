@@ -9,31 +9,38 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import {setIsOrderComplete} from "../store/order/order.action";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
-import { darkScrollbar } from "@mui/material";
+import { useEffect, useState } from "react";
+import { OrderAlertContainer, OrderConfirmContainer } from "./order_confirm.style";
 // import FormControlLabel from '@mui/material/FormControlLabel';
 const OrderConfirm = ()=>{
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    var amount = 3
+    let [second,setSecond] = useState(amount)
     // const isOrderComplete = useSelector(selectorOrder)
     useEffect(()=>{
+        setInterval(()=>{
+            setSecond(second--)
+        },1000)
+        
         setTimeout(()=>{
             navigate('/shop')
             dispatch(setIsOrderComplete(false))
-        }, 3000)
+        },4000)
         
     },[])
     const ClickHandler = ()=>{ 
         navigate('/shop')
     }
     return(
-        <div>
-            <div>
-        <BsCheckLg/>
-        <h3>Thanks for your order! Page will automatically return to shop in {} s</h3>
-        </div>
+        <OrderConfirmContainer>
+        <OrderAlertContainer>
+        <BsCheckLg width="100px" height="100px"/>
+        <h3>Thanks for your order!</h3> 
+        <h4>Page will automatically return to shop in {second} s</h4>
+        </OrderAlertContainer>
         <Button onClick={ClickHandler}>Order Again</Button>
-        </div>
+        </OrderConfirmContainer>
     )
 
 }
