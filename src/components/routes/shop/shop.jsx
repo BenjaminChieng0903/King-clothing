@@ -8,10 +8,6 @@ import { useDispatch } from "react-redux";
 import { FetchProductsAsync } from "../../store/product/product.action";
 
 const Shop = ()=>{
-  const dispatch = useDispatch()
-  useEffect(()=>{
-    dispatch(FetchProductsAsync())
-},[])
 
   return(<Routes>
     <Route index element = {<ProductPreview/>}></Route>

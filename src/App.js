@@ -9,6 +9,7 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { UserChangeListener, CreaeteUserDocFromAuth} from './utils/firebase/firebase.js';
 import { setCurrentUser } from './components/store/user/user.action.js';
+import { FetchProductsAsync } from './components/store/product/product.action.js';
 const App = () => {
   const dispatch = useDispatch()
   useEffect(()=>{
@@ -18,9 +19,9 @@ const App = () => {
         }
        dispatch(setCurrentUser(user)) 
 })
+    dispatch(FetchProductsAsync())
     return unsubscribe;
 },[])
-
 
   return (
     <Routes>
