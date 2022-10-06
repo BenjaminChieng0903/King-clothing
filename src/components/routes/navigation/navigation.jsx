@@ -11,7 +11,7 @@ import { Signout } from "../../../utils/firebase/firebase";
 import { useSelector } from "react-redux";
 import { selectorCurrentUser } from "../../store/user/user.selector";
 import { selectorCartIsCartOpen } from "../../store/cart/cart.selector";
-
+import Avatar from '@mui/material/Avatar';
 const Navigation = ()=>{
   //  const {isCartOpen} = useContext(CartContext)
 
@@ -27,7 +27,7 @@ const Navigation = ()=>{
         </Link>
         <div className="nav-links-container">
         <Link className="nav-link" to={'/shop'}>Shop</Link>
-        { currentUser ?<Link className="nav-link" to={'/auth'} onClick = {Signout}>Sign out</Link>
+        { currentUser ?<Link className="nav-link" to={'/profile'}><Avatar alt={`${currentUser.email}`} src='/' /></Link>
           :<Link className="nav-link" to={'/auth'}>Sign in</Link>
     }
         <CartIcon />

@@ -1,0 +1,2 @@
+1. optimize user portal(personal info, order history, shipping address etc) after logging in
+change sign out to personal info icon, and add sign out button on the bottom of user portal.

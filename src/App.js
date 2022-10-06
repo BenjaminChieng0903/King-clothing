@@ -10,6 +10,7 @@ import { useEffect } from 'react';
 import { UserChangeListener, CreaeteUserDocFromAuth} from './utils/firebase/firebase.js';
 import { setCurrentUser } from './components/store/user/user.action.js';
 import { FetchProductsAsync } from './components/store/product/product.action.js';
+import UserGate from './components/routes/user-gate/user-gate.jsx';
 const App = () => {
   const dispatch = useDispatch()
   useEffect(()=>{
@@ -31,6 +32,7 @@ const App = () => {
         <Route path='auth' element={<Authentication />} />
         <Route path='checkout' element={<Checkout />} />
       </Route>
+      <Route path='profile/*' element = {<UserGate/>}></Route>
     </Routes>
   );
 };
